@@ -2,7 +2,7 @@
 
 ## Database Schema Design
 
-![db-schema]
+![db-schema](db-schema.png)
 
 [db-schema]: ./images/example.png
 
