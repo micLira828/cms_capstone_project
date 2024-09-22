@@ -77,6 +77,7 @@ app.use((err, _req, _res, next) => {
 });
 
 // backend/app.js
+//
 // ...
 // Error formatter
 app.use((err, _req, res, _next) => {
