@@ -8,6 +8,113 @@
 
 ## API Documentation
 
+### Get all blogs
+
+---------------------------
+
+### Get all blogs of a user
+
+----------------------------
+
+
+### Get all blogs of the current user
+
+----------------------------
+
+### Create a blog
+
+* Require Authentication: true
+* Request
+  * Method: POST
+  * URL: /api/blogs
+  * Body: 
+
+  
+    ```json
+    {
+      "userId": 1,
+       "title": "Demo of Extreme Wellness"
+    }
+
+  * Successful Response when a blog is created successfully
+  * Status Code: 201
+  * Headers:
+   * Content-Type: application/json
+   * Body:
+    ```json
+      
+     { "Blog": {
+        "id":1,
+        "User": {
+            "id": 1,
+            "email": "demo@user.io",
+            "username": "demo-lition",
+            "firstName": "Demo",
+            "lastName": "Lition",
+        },
+        "title": "Demo of Extreme Wellness",
+        "createdAt": "2021-11-19 20:39:36",
+        "updatedAt": "2021-11-20 10:06:40"
+     }}
+
+------------------------
+
+### Update a blog
+
+* Require Authentication: true
+* Request
+  * Method: PUT, PATCH
+  * URL: /api/blogs
+  * Body: 
+
+  
+    ```json
+    {
+      "userId": 1,
+       "title": "Demo of Extreme Wellness"
+    }
+
+  * Successful Response when a blog is created successfully
+  * Status Code: 200
+  * Headers:
+   * Content-Type: application/json
+    * Body:
+
+     ```json
+    {
+      "userId": 1,
+      "title": "Demo of Ultimate Wellness",
+      "createdAt": "2021-11-19 20:39:36",
+      "updatedAt": "2021-11-20 10:06:40"
+    }
+
+ 
+
+
+------------------------
+
+### Delete a blog
+
+  Delete a blog
+
+* Require Authentication: true
+* Request
+  * Method: DELETE
+  * URL: /api/blogs/:blogId
+  * Body: none
+
+* Successful Response when the posts of a blog are retreived successfully
+  * Status Code: 200
+  * Headers:
+    * Content-Type: application/json
+  * Body:
+
+     ```json
+    {
+      "message": "Successfully deleted"
+    }
+    ```
+------------------------------------
 
 ### Get All Posts of a blog
 
