@@ -9,15 +9,29 @@
 ## API Documentation
 
 ### Get all blogs
+* Require Authentication: false
+* Request
+  * Method: GET
+  * URL: /api/blogs
+  * Body: none
 
 ---------------------------
 
 ### Get all blogs of a user
 
-----------------------------
+* Require Authentication: false
+* Request
+  * Method: GET
+  * URL: /api/users/:userId/blogs
+  * Body: none
 
-
+----------------------------------
 ### Get all blogs of the current user
+* Require Authentication: true
+* Request
+  * Method: GET
+  * URL: /api/blogs/current
+  * Body: none
 
 ----------------------------
 
@@ -64,7 +78,7 @@
 * Require Authentication: true
 * Request
   * Method: PUT, PATCH
-  * URL: /api/blogs
+  * URL: /api/blogs/:blogId
   * Body: 
 
   
