@@ -64,7 +64,7 @@
 * Require Authentication: true
 * Request
   * Method: PUT, PATCH
-  * URL: /api/blogs
+  * URL: /api/blogs/:blogId
   * Body: 
 
   
