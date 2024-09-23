@@ -15,6 +15,29 @@
   * URL: /api/blogs
   * Body: none
 
+  
+ * Response: Successfully retreive all blogs
+   * Status Code: 200
+   * Headers:
+    * Content-Type: application/json
+   * Body:
+    ```json
+      
+     { "Blogs": [{
+        "id":1,
+        "User": {
+            "id": 1,
+            "email": "demo@user.io",
+            "username": "demo-lition",
+            "firstName": "Demo",
+            "lastName": "Lition",
+        },
+        "title": "Demo of Extreme Wellness",
+        "createdAt": "2021-11-19 20:39:36",
+        "updatedAt": "2021-11-20 10:06:40"
+     }]}
+
+
 ---------------------------
 
 ### Get all blogs of a user
@@ -25,6 +48,28 @@
   * URL: /api/users/:userId/blogs
   * Body: none
 
+    
+* Response: Successfully retreive all blogs
+    * Status Code: 200
+    * Headers:
+    * Content-Type: application/json
+    * Body:
+        ```json
+        
+        {"User": {
+                "id": 1,
+                "email": "demo@user.io",
+                "username": "demo-lition",
+                "firstName": "Demo",
+                "lastName": "Lition",
+            },
+            "Blogs": [{
+            "id":1,
+            "title": "Demo of Extreme Wellness",
+            "createdAt": "2021-11-19 20:39:36",
+            "updatedAt": "2021-11-20 10:06:40"
+        }]}
+
 ----------------------------------
 ### Get all blogs of the current user
 * Require Authentication: true
@@ -32,6 +77,20 @@
   * Method: GET
   * URL: /api/blogs/current
   * Body: none
+
+* Response: Successfully retreive all blogs
+  * Status Code: 200
+  * Headers:
+   * Content-Type: application/json
+   * Body:
+    ```json
+      
+     {"Blogs": [{
+        "id":1,
+        "title": "Demo of Extreme Wellness",
+        "createdAt": "2021-11-19 20:39:36",
+        "updatedAt": "2021-11-20 10:06:40"
+     }]}
 
 ----------------------------
 
@@ -50,12 +109,12 @@
        "title": "Demo of Extreme Wellness"
     }
 
-  * Successful Response when a blog is created successfully
-  * Status Code: 201
-  * Headers:
-   * Content-Type: application/json
-   * Body:
-    ```json
+* Response: Successful Response when a blog is created successfully
+    * Status Code: 201
+    * Headers:
+    * Content-Type: application/json
+    * Body:
+     ```json
       
      { "Blog": {
         "id":1,
@@ -88,7 +147,7 @@
        "title": "Demo of Extreme Wellness"
     }
 
-  * Successful Response when a blog is created successfully
+* Response: Successful Response when a blog is created successfully
   * Status Code: 200
   * Headers:
    * Content-Type: application/json
@@ -117,7 +176,7 @@
   * URL: /api/blogs/:blogId
   * Body: none
 
-* Successful Response when the posts of a blog are retreived successfully
+* Response: Successful Response when the posts of a blog are retreived successfully
   * Status Code: 200
   * Headers:
     * Content-Type: application/json
@@ -140,7 +199,7 @@ Gets all of a blogs posts
   * URL: /api/blogs/:blogId/posts
   * Body: false
 
-* Successful Response when the posts of a blog are retreived successfully
+* Response: Successful Response when the posts of a blog are retreived successfully
   * Status Code: 200
   * Headers:
     * Content-Type: application/json
@@ -183,7 +242,7 @@ Gets all of a blogs posts
       "postEntry": "This is a test post entry. Hopefully the passage of your blog post will be longer",
     }
 
-* Successful Response when a post of a blog is created successfully
+* Response: Successful Response when a post of a blog is created successfully
   * Status Code: 201
   * Headers:
     * Content-Type: application/json
@@ -231,7 +290,7 @@ Gets all of a blogs posts
       "postEntry": "This is a test post entry. Hopefully the passage of your blog post will be longer",
     }
 
-* Successful Response when the posts of a blog are retreived successfully
+* Response: Successful Response when the posts of a blog are retreived successfully
   * Status Code: 200
   * Headers:
     * Content-Type: application/json
@@ -258,7 +317,7 @@ Gets all of a blogs posts
   * URL: /api/blogs/:blogId/posts/:postId
   * Body: none
 
-* Successful Response when the posts of a blog are retreived successfully
+* Response: Successful Response when the posts of a blog are retreived successfully
   * Status Code: 200
   * Headers:
     * Content-Type: application/json
