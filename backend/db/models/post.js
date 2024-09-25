@@ -19,10 +19,13 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER,
     blogId: DataTypes.INTEGER,
     title: DataTypes.STRING,
-    postEntry: DataTypes.TEXT('long'),
-    validate: {
+    postEntry: {
+      type: DataTypes.TEXT('long'),
+      validate: {
         len: [500, 10000],
-    }
+       }
+    },
+ 
   }, {
     sequelize,
     modelName: 'Post',
