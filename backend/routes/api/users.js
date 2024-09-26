@@ -2,7 +2,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User } = require('../../db/models');
+const { User, Blog } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -33,6 +33,28 @@ const validateSignup = [
 
 // backend/routes/api/users.js
 // ...
+ // Get all blogs of the current user
+ router.get(
+  '/:userId/blogs',
+  async (req, res) => {
+    const {userId} = req.params;
+
+    console.log ('The user is ', userId)
+
+     
+   
+        const user = await User.findOne({where: {id: userId}});
+
+        if(!user){
+          return res.status(404).json({message: "Sorry! User Not Found!"})
+         }
+
+        const blogs = await Blog.findAll({where: {userId: user.id}});
+
+        console.log('The blogs are ', blogs)
+        res.json({blogs});
+  }
+);
 
 // Sign up
 router.post(
