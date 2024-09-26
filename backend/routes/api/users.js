@@ -40,19 +40,17 @@ const validateSignup = [
     const {userId} = req.params;
 
     console.log ('The user is ', userId)
-
-     
    
-        const user = await User.findOne({where: {id: userId}});
+    const user = await User.findOne({where: {id: userId}});
 
-        if(!user){
-          return res.status(404).json({message: "Sorry! User Not Found!"})
-         }
+    if(!user){
+        return res.status(404).json({message: "Sorry! User Not Found!"})
+    }
 
-        const blogs = await Blog.findAll({where: {userId: user.id}});
+      const blogs = await Blog.findAll({where: {userId: user.id}});
 
-        console.log('The blogs are ', blogs)
-        res.json({blogs});
+      console.log('The blogs are ', blogs)
+      res.json({blogs});
   }
 );
 
