@@ -125,7 +125,7 @@ router.put('/:blogId', requireAuth, async(req, res) => {
  return res.json(blogRes);
 });
 
-
+//comment for next commit
 router.delete('/:blogId', requireAuth, async(req, res) => {
   const blog_id = req.params.blogId;
   const blog = await Blog.findByPk(blog_id);
