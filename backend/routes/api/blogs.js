@@ -98,8 +98,8 @@ router.put('/:blogId', requireAuth, async(req, res) => {
      return res.status(403).json({message: 'Blog with title already exists'});
   }
 
-  console.log(req.user, 'had a little lamb')
-   const userId = req.body.userId;
+ 
+   const userId = req.user.id;
    if(userId !== blog.userId){
       return res.status(403).json({message: "Forbidden"})
    }
