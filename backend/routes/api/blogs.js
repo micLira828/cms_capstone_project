@@ -78,7 +78,7 @@ router.post('/', requireAuth, async(req, res) => {
 
 
 
-//Just another comment to push something to dev
+//Test comment for change
 router.put('/:blogId', requireAuth, async(req, res) => {
   const blog_id = req.params.blogId;
   const blog= await Blog.findByPk(blog_id);
@@ -124,5 +124,27 @@ router.put('/:blogId', requireAuth, async(req, res) => {
 
  return res.json(blogRes);
 });
+
+
+router.delete('/:blogId', requireAuth, async(req, res) => {
+  const blog_id = req.params.blogId;
+  const blog = await Blog.findByPk(blog_id);
+  if(!blog){
+     return res.status(404).json({
+      message: "Blog couldn't be found"
+    });
+   }
+
+   const userId = req.user.id;
+   if(userId !== blog.userId){
+      return res.status(403).json({message: "Forbidden"})
+   }
+   
+  await blog.destroy();
+  return res.json({
+     message: "Successfully deleted"
+   });
+});
+
 
 module.exports = router;
