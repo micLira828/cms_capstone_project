@@ -2,7 +2,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { Blog, User} = require('../../db/models');
+const { Blog, User, Post} = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -146,5 +146,30 @@ router.delete('/:blogId', requireAuth, async(req, res) => {
    });
 });
 
+router.get('/:blogId/posts', async(req, res) => {
+  const {blogId} = req.params;
+  const blog = await Blog.findByPk(blogId);
+  if(!blog){
+     return res.status(404).json({message: "Blog couldn't be found"})
+  }
+  const blog_posts = await Post.findAll({
+     where: {
+        blogId: blogId
+     }
+  });
+
+  const result = [];
+  for(let post of blog_posts){
+     const {createdAt, updatedAt, ...rest} = await post.toJSON();
+     let prettyRes = {...rest}
+     prettyRes.createdAt = createdAt.toISOString().replace(/T/,' ').replace(/\..+/,'')
+     prettyRes.updatedAt = updatedAt.toISOString().replace(/T/, ' ').replace(/\..+/,'')
+     result.push(prettyRes);
+  }
+
+  const newPrettyRes = {"Blog":blog, "Posts":result}
+ 
+  return res.json(newPrettyRes);
+});
 
 module.exports = router;
