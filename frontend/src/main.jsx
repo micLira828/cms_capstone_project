@@ -6,6 +6,7 @@ import './index.css';
 import configureStore from './store';
 import * as sessionActions from './store/session'; 
 
+
 const store = configureStore();
 // frontend/src/main.jsx
 
