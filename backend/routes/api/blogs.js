@@ -172,4 +172,42 @@ router.get('/:blogId/posts', async(req, res) => {
   return res.json(newPrettyRes);
 });
 
+
+
+router.post('/:blogId/posts', requireAuth, async(req, res) => {
+  const {blogId} = req.params;
+ 
+ const blog = await Blog.findByPk(blogId);
+ 
+
+ if(!blog){
+  return res.status(404).json({
+   message: "Blog couldn't be found"
+ });
+}
+
+  const userId = req.user.id;
+  
+ 
+  const blog_post= await Post.create(
+     { 
+      userId: userId,
+      blogId: blogId,
+      title: req.body.title,
+      postEntry: req.body.postEntry
+     }
+ );
+
+ const {createdAt, updatedAt, ...rest} = await blog_post.toJSON();
+ const prettyRes = {...rest}
+
+
+  prettyRes.createdAt = createdAt.toISOString().replace(/T/,' ').replace(/\..+/,'')
+  prettyRes.updatedAt = updatedAt.toISOString().replace(/T/, ' ').replace(/\..+/,'')
+
+
+  return res.status(201).json(prettyRes);
+
+});
+
 module.exports = router;
