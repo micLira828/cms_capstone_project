@@ -39,4 +39,21 @@ router.put('/:postId', requireAuth, async(req, res, next) =>{
   return res.json(prettyRes);
 });
 
+router.delete('/:postId', requireAuth, async(req, res) =>{
+  const {postId} = req.params;
+   
+  const post = await Post.findByPk(postId);
+  if(!post){
+    return res.status(404).json({message: "Review couldn't be found"})
+ }
+ const userId = req.user.id;
+ if(userId !== post.userId){
+  return res.status(403).json({message: "Forbidden"})
+}
+  await post.destroy();
+
+  return res.json({message: "Successfully deleted"})
+
+});
+
 module.exports = router;
