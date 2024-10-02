@@ -88,6 +88,9 @@ export const restoreUser = () => async (dispatch) => {
 // ...
 
 
+
+
+
 const initialState = { user: null };
 
 export const sessionReducer = (state = initialState, action) => {
@@ -106,5 +109,7 @@ export const sessionReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+
 
 export default sessionReducer;
