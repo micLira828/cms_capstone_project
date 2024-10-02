@@ -80,8 +80,6 @@ router.get(
     if (user) {
       const safeUser = {
         id: user.id,
-        firstName: user.firstName,
-        lastName: user.lastName,
         email: user.email,
         username: user.username
       };
@@ -102,6 +100,9 @@ router.delete(
   );
   
   // ...
+  // frontend/src/store/session.js
+
+
 
   module.exports = router;
 
