@@ -116,7 +116,7 @@ export const postBlog = (blog) => async(dispatch) => {
    }
  }
 
- export const updateSpot = (blog) => async(dispatch) => {
+ export const updateBlog = (blog) => async(dispatch) => {
 
   let options = {
     method: 'PUT',
@@ -152,8 +152,8 @@ const initialState = {
         let newById = {}
         for(let blog of blogs){
           /*Adding key value pair 
-          where spot id is key and 
-          spot is value*/
+          where blog id is key and 
+          blog is value*/
           newById[blog.id] = blog
         }
         newState.byId = newById;
@@ -166,22 +166,22 @@ const initialState = {
         let newById = {};
         newById[blog.id] = blog;
         newState.byId = newById;
-        //newState[allSpots] = [spot];
+      
         return newState;
       }
       case ADD_BLOG: {
        newState = {...state};
-       //Add new spot to byId 
-       const spot = action.payload;
+       //Add new blog to byId 
+       const blog = action.payload;
        newState.byId = {...state.byId};
        const blogId = blog.id;
        newState.byId[blogId] = blog;
        newState.allBlog= [...state.allBlogs, blog];
        return newState;
       }
-      case EDIT_SPOT: {
+      case EDIT_BLOG: {
         newState = {...state};
-        //Add new spot to byId 
+        //Add new blog to byId 
         const blog= action.payload;
         const updatedBlogs = newState.allBlogs.filter(blg => {
           return blg.id !== blog.id;
@@ -193,7 +193,7 @@ const initialState = {
         return newState;
       }
   
-      case DELETE_SPOT: {
+      case DELETE_BLOG: {
         newState = {...state}
   
         let blogId = action.payload;
