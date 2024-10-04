@@ -179,7 +179,7 @@ const initialState = {
        newState.allBlog= [...state.allBlogs, blog];
        return newState;
       }
-      case EDIT_SPOT: {
+      case EDIT_BLOG: {
         newState = {...state};
         //Add new spot to byId 
         const blog= action.payload;
@@ -193,7 +193,7 @@ const initialState = {
         return newState;
       }
   
-      case DELETE_SPOT: {
+      case DELETE_BLOG: {
         newState = {...state}
   
         let blogId = action.payload;

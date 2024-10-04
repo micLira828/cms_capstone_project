@@ -3,11 +3,16 @@ import thunk from 'redux-thunk';
 
 import sessionReducer from './session';
 
+import blogReducer from './blog';
+import postReducer from './post';
+
 
 
 const rootReducer = combineReducers({
   // ADD REDUCERS HERE
-  session: sessionReducer
+  session: sessionReducer,
+  blog: blogReducer,
+  post: postReducer,
 });
 
 let enhancer;
