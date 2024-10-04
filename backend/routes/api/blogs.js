@@ -20,7 +20,7 @@ router.get(
             {model: User}
           ]});
         
-          return res.json({blogs});
+          return res.json({'Blogs': blogs});
     }
   );
 

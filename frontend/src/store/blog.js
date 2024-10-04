@@ -46,15 +46,14 @@ export const deleteBlog = (blog) => {
 
   // thunk action creator
 export const getAllBlogs = () => async (dispatch) => {
-    const response = await fetch('/api/blogs/');
-
-
+    const response = await csrfFetch('/api/blogs');
     if(response.ok){
+     
       const data = await response.json();
+      console.log('The blogs are ', data)
       dispatch(loadBlogs(data.Blogs));
       return data;
     }
-    
   };
 
   export const getOneBlog = (blogId) => async (dispatch) => {
@@ -83,7 +82,7 @@ export const removeBlog = (blog) => async(dispatch) => {
     const response = await csrfFetch(`/api/blog/${blog.id}`, options);
 
     if(response.ok){
-      const data = await response.json();
+      // const data = await response.json();
       dispatch(deleteBlog(blogId))
     }
     else{
@@ -143,24 +142,23 @@ const initialState = {
   
   // reducer
   const blogsReducer = (state = initialState, action) => {
-     let newState;
+    let newState;
     switch (action.type) {
       case GET_ALL_BLOGS: {
-        newState = {...state};
-        let blogs = action.payload
+        let newState = {...state};
+        console.log('The payload is ', action.payload);
+        let blogs = action.payload;
         newState.allBlogs = blogs
         let newById = {}
         for(let blog of blogs){
-          /*Adding key value pair 
-          where spot id is key and 
-          spot is value*/
+         
           newById[blog.id] = blog
         }
         newState.byId = newById;
         return newState;
       }
       case GET_ONE_BLOG: {
-        newState = {...state};
+        let newState = {...state};
         const blog = action.payload;
       
         let newById = {};
