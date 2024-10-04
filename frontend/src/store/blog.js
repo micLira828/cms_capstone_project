@@ -39,7 +39,7 @@ export const deleteBlog = (blog) => {
   //regular action creator
   export const editBlog = (blog) => {
     return {
-      type: EDIT_BLoG,
+      type: EDIT_BLOG,
       payload:blog
     };
   };
@@ -172,7 +172,7 @@ const initialState = {
       case ADD_BLOG: {
        newState = {...state};
        //Add new spot to byId 
-       const spot = action.payload;
+       const blog = action.payload;
        newState.byId = {...state.byId};
        const blogId = blog.id;
        newState.byId[blogId] = blog;
