@@ -11,7 +11,7 @@ export const GET_BLOG_POSTS= "posts/getBlogPosts";
   //regular action creator
 export const loadPost = (post) => {
   return {
-    type: GET_ONE_Post,
+    type: GET_ONE_POST,
     payload:post
   };
 };
@@ -47,14 +47,12 @@ export const deletePost = (post) => {
   };
 
  // thunk action creator
-export const getBlogPosts = ({blog}) => async (dispatch) => {
-   
-  console.log('Blog apples', blog);
-    const blogId = blog.id;
+export const getBlogPosts = (blogId) => async (dispatch) => {
+
     const response = await fetch(`/api/blogs/${blogId}/posts`);
     if(response.ok){
       const data = await response.json();
-      console.log('The data is', data)
+      
       dispatch(loadBlogPosts(data.Posts));
       return data;
     }
@@ -149,6 +147,7 @@ const postsReducer = (state = initialState, action) => {
     case GET_BLOG_POSTS: {
       newState = {...state};
       let posts = action.payload;
+      console.log('My posts are ', posts)
       newState.allPosts = posts;
       let newById = {}
       for(let post of posts){
@@ -158,6 +157,7 @@ const postsReducer = (state = initialState, action) => {
         newById[post.id] = post
       }
       newState.byId = newById;
+      console.log('My posts are ', newState);
     
       return newState;
     }

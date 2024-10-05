@@ -58,12 +58,13 @@ export const getAllBlogs = () => async (dispatch) => {
 
   export const getOneBlog = (blogId) => async (dispatch) => {
     
+    blogId = parseInt(blogId);
+    console.log(blogId, ' french hens')
   
     const response = await fetch(`/api/blogs/${blogId}`);
 
     if (response.ok) {
       const data = await response.json();
-     
       dispatch(loadBlog(data));
       console.log('The new blog data is', data)
       return data;
@@ -160,16 +161,17 @@ const initialState = {
       case GET_ONE_BLOG: {
         let newState = {...state};
         const blog = action.payload;
-      
+        console.log('My blog is ', blog)
         let newById = {};
-        newById[blog.id] = blog;
+        newById[blog.Blog.id] = blog;
         newState.byId = newById;
-        //newState[allSpots] = [spot];
+        console.log(newState);
+   
         return newState;
       }
       case ADD_BLOG: {
        newState = {...state};
-       //Add new spot to byId 
+       //Add new blog to byId 
        const blog = action.payload;
        newState.byId = {...state.byId};
        const blogId = blog.id;
