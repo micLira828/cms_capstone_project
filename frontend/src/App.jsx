@@ -6,7 +6,8 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation';
 import Blogs from './components/Blogs';
-import Posts from './components/Blogs/Posts';
+import BlogDetails from './components/Blogs/BlogDetails';
+
 import * as sessionActions from './store/session';
 
 function Layout() {
@@ -40,8 +41,8 @@ const router = createBrowserRouter([
         element: <SignupFormPage />
       },
       {
-        path: "/blogs/:blogId/posts",
-        element: <Posts />
+        path: "/blogs/:blogId",
+        element: <BlogDetails/>
       }
     ]
   }

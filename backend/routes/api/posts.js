@@ -41,7 +41,7 @@ router.put('/:postId', requireAuth, async(req, res, next) =>{
 
 router.delete('/:postId', requireAuth, async(req, res) =>{
   const {postId} = req.params;
-   
+  
   const post = await Post.findByPk(postId);
   if(!post){
     return res.status(404).json({message: "Review couldn't be found"})

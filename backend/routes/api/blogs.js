@@ -24,6 +24,22 @@ router.get(
     }
   );
 
+
+  
+// Get all blogs
+router.get(
+   '/:blogId',
+   async (req, res) => {
+         
+         const {blogId} = req.params;
+         const blog = await Blog.findOne({where: {id: blogId}, include: [
+           {model: User}
+         ]});
+       
+         return res.json({'Blog': blog});
+   }
+ );
+
   // Get all blogs of the current user
 router.get(
   '/current', requireAuth,
@@ -148,6 +164,7 @@ router.delete('/:blogId', requireAuth, async(req, res) => {
 
 router.get('/:blogId/posts', async(req, res) => {
   const {blogId} = req.params;
+
   const blog = await Blog.findByPk(blogId);
   if(!blog){
      return res.status(404).json({message: "Blog couldn't be found"})
