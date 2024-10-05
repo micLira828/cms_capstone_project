@@ -41,7 +41,7 @@ const router = createBrowserRouter([
         element: <SignupFormPage />
       },
       {
-        path: "/blogs/:blogId",
+        path: "/blogs/:blogId/posts",
         element: <BlogDetails/>
       }
     ]

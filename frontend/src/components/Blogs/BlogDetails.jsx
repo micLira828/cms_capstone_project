@@ -35,12 +35,12 @@ const BlogDetails = () => {
     return <h1>Loading...</h1>;
   }
 
-  console.log('My blog is ', blog)
+
 
   return (
     <>
-       <h2>{blog.Blog.title}</h2>
-       <p><em>{blog.Blog.description}</em></p>
+       <h2>{blog.title}</h2>
+       <p><em>{blog.description}</em></p>
         <Posts blog = {blog} /> 
     </>
   );
