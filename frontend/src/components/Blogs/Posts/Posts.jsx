@@ -9,18 +9,18 @@ import OpenModalButton from '../../OpenModalButton';
 import CreatePostModal from './CreatePostModal';
 const Posts = ({blog}) => {
   
-
-    console.log('I love my ', blog)
  
   const dispatch = useDispatch();
   let sessionUser = useSelector((state) => state.session.user);
   let blogPosts = useSelector((state) => state.post.allPosts);
 
   useEffect(() => {
-    const blogId = blog.Blog.id;
+    const blogId = blog.id;
     const blogPosts = dispatch(getBlogPosts(blogId));
     console.log('Posts ', blogPosts)
   }, [dispatch])
+
+  
 
   return (
     <>
