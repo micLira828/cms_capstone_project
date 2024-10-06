@@ -3,6 +3,7 @@ import { csrfFetch } from "./csrf";
 export const GET_ALL_BLOGS= "blogs/getAllBlogs";
 export const GET_ONE_BLOG = "blogs/getOneBlog";
 export const GET_USERS_BLOGS = "blogs/getUsersBlogs";
+export const GET_CURRENT_USERS_BLOGS = "blogs/getCurrentUsersBlogs";
 export const ADD_BLOG = "blogs/postBlog";
 export const EDIT_BLOG = "blogs/updateBlog";
 export const DELETE_BLOG= "blogs/removeBlogs";
@@ -21,6 +22,15 @@ const loadBlogs = (blogs) => {
       payload: usersBlogs
     };
   };
+
+
+  const loadCurrentUsersBlogs = (currentUsersBlogs) => {
+    return {
+      type: GET_CURRENT_USERS_BLOGS,
+      payload: currentUsersBlogs
+    };
+  };
+
 
   //regular action creator
 export const loadBlog = (blog) => {
@@ -76,6 +86,20 @@ export const getUsersBlogs = (userId) => async (dispatch) => {
     return data;
   }
 };
+
+
+     // thunk action creator
+     export const getCurrentUsersBlogs = () => async (dispatch) => {
+ 
+      const response = await csrfFetch(`/api/blogs/current`);
+      if(response.ok){
+       
+        const data = await response.json();
+        console.log('The blogs are ', data)
+        dispatch(loadCurrentUsersBlogs(data.Blogs));
+        return data;
+      }
+    };
 
   export const getOneBlog = (blogId) => async (dispatch) => {
     
@@ -186,6 +210,21 @@ const initialState = {
         newState.allBlogs = usersBlogs
         let newById = {}
         for(let blog of usersBlogs){
+         
+          newById[blog.id] = blog
+        }
+        newState.byId = newById;
+        return newState;
+      }
+
+
+      case GET_CURRENT_USERS_BLOGS: {
+        let newState = {...state};
+        console.log('The payload is ', action.payload);
+        let currentUsersBlogs = action.payload;
+        newState.allBlogs = currentUsersBlogs
+        let newById = {}
+        for(let blog of currentUsersBlogs){
          
           newById[blog.id] = blog
         }

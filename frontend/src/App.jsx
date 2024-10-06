@@ -8,8 +8,10 @@ import Navigation from './components/Navigation';
 import Blogs from './components/Blogs';
 import BlogDetails from './components/Blogs/BlogDetails';
 import UsersBlogs from './components/Blogs/UsersBlogs';
+import ManageYourBlogs from './components/Blogs/ManageYourBlogs';
 
 import * as sessionActions from './store/session';
+
 
 
 function Layout() {
@@ -47,9 +49,13 @@ const router = createBrowserRouter([
         element: <BlogDetails/>
       },
       {
+        path: "/blogs/current",
+        element: <ManageYourBlogs/>
+      },
+      {
         path: "/users/:userId",
         element: <UsersBlogs/>
-      }
+      },
     ]
   }
 ]);
