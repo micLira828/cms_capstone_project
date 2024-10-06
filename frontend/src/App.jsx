@@ -7,8 +7,10 @@ import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation';
 import Blogs from './components/Blogs';
 import BlogDetails from './components/Blogs/BlogDetails';
+import UsersBlogs from './components/Blogs/UsersBlogs';
 
 import * as sessionActions from './store/session';
+
 
 function Layout() {
   const dispatch = useDispatch();
@@ -43,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "/blogs/:blogId/posts",
         element: <BlogDetails/>
+      },
+      {
+        path: "/users/:userId",
+        element: <UsersBlogs/>
       }
     ]
   }
