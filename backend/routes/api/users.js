@@ -6,6 +6,7 @@ const { User, Blog } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+const { Model } = require('sequelize');
 // ...
 const router = express.Router();
 
@@ -33,7 +34,7 @@ const validateSignup = [
 
 // backend/routes/api/users.js
 // ...
- // Get all blogs of the current user
+ // Get all blogs of a user
  router.get(
   '/:userId/blogs',
   async (req, res) => {
@@ -47,10 +48,12 @@ const validateSignup = [
         return res.status(404).json({message: "Sorry! User Not Found!"})
     }
 
-      const blogs = await Blog.findAll({where: {userId: user.id}});
+      const blogs = await Blog.findAll({where: {userId: user.id}, include: [
+        {model: User}
+      ]});
 
       console.log('The blogs are ', blogs)
-      res.json({blogs});
+      res.json({"Blogs":blogs});
   }
 );
 
@@ -59,14 +62,16 @@ router.post(
   '/',
   validateSignup,
   async (req, res) => {
-    const { email, password, username } = req.body;
+    const { email, password, username, firstName, lastName} = req.body;
     const hashedPassword = bcrypt.hashSync(password);
-    const user = await User.create({ email, username, hashedPassword });
+    const user = await User.create({ email, username, firstName, lastName, hashedPassword });
 
     const safeUser = {
       id: user.id,
       email: user.email,
       username: user.username,
+      firstName: user.firstName,
+      lastName: user.lastName
     };
 
     await setTokenCookie(res, safeUser);

@@ -26,7 +26,7 @@ router.get(
 
 
   
-// Get all blogs
+// Get one blog
 router.get(
    '/:blogId',
    async (req, res) => {
