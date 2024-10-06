@@ -44,7 +44,7 @@ router.get(
     }
   );
   
-// Get one blog
+// Get one blog, thats searched
 router.get(
    '/:blogId',
    async (req, res) => {
