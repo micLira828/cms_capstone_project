@@ -24,9 +24,27 @@ router.get(
     }
   );
 
-
+  // Get all blogs of the current user
+  router.get(
+    '/current', requireAuth,
+    async (req, res) => {
+      const {user} = req;
   
-// Get one blog
+        const userId = req.user.id;
+        if(userId !== user.id){
+         return res.status(403).json({message: "Forbidden"})
+      }
+     
+          const blogs = await Blog.findAll({where: {userId: user.id}, include: [
+            {model: User}
+          ]});
+  
+          console.log('The blogs are ', blogs)
+          res.json({"Blogs":blogs});
+    }
+  );
+  
+// Get one blog, thats searched
 router.get(
    '/:blogId',
    async (req, res) => {
@@ -40,23 +58,7 @@ router.get(
    }
  );
 
-  // Get all blogs of the current user
-router.get(
-  '/current', requireAuth,
-  async (req, res) => {
-    const {user} = req;
 
-      const userId = req.user.id;
-      if(userId !== user.id){
-       return res.status(403).json({message: "Forbidden"})
-    }
-   
-        const blogs = await Blog.findAll({where: {userId: user.id}});
-
-        console.log('The blogs are ', blogs)
-        res.json({blogs});
-  }
-);
 
 
 

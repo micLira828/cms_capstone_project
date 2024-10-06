@@ -16,6 +16,12 @@ function ProfileButton({ user }) {
     setShowMenu((prev) => !prev);
   };
 
+
+  
+  const navigateToYourBlogs = () => {
+    navigate('/blogs/current');
+  };
+
   useEffect(() => {
     if (!showMenu) return;
 
@@ -55,8 +61,9 @@ function ProfileButton({ user }) {
         {user ? (
           <>
           <ul className = "toggleMenuList">
-            <li>Hello, {user.firstName}.</li>
+            <li>Hello, {user.username}!</li>
             <li>{user.email}</li>
+            <li><button onClick = {navigateToYourBlogs}>Manage Your Blogs</button></li>
             <li>
               <button onClick={logout}>Log Out</button>
             </li>
