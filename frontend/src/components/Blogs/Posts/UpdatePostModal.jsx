@@ -12,7 +12,7 @@ const UpdatePostModal = ({postId}) => {
 
     let post = useSelector(state => state.post.byId[postId])
     // let post = useSelector((state) => state.allPosts[postId]);
-    
+    //test comment
   console.log('The post is', post);
 
     const [title, setTitle] = useState(post.title);
