@@ -114,7 +114,6 @@ export const postPost = (blog, post) => async(dispatch) => {
 
  export const updatePost = (post) => async(dispatch) => {
 
-  console.log('The post is', post);
   let options = {
     method: 'PUT',
     headers: {'Content-Type': 'application/json'},

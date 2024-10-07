@@ -17,10 +17,10 @@ const PostCard = ({post}) => {
                  modalComponent = {<UpdatePostModal postId = {post.id}/>}
                  buttonText = {'Update Post'}
                  />
-     {/* <OpenModalButton 
+     {<OpenModalButton 
                  modalComponent = {<DeletePostModal postId = {post.id}/>}
                  buttonText = {'Delete Post'}
-                /> */}
+                /> }
     </>) : ""}
     </div>)
    

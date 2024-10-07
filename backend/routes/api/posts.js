@@ -11,6 +11,22 @@ const { Op, Sequelize, where, ValidationError} = require('sequelize');
 
 const router = express.Router();
 
+  
+// Get one blog, thats searched
+router.get(
+  '/:postId',
+  async (req, res) => {
+        
+        const {postId} = req.params;
+        const post = await Blog.findOne({where: {id: postId},include: [
+          {model: User}
+        ]});
+      
+        return res.json(post);
+  }
+);
+
+
 
 router.put('/:postId', requireAuth, async(req, res, next) =>{
     const {postId} = req.params;
