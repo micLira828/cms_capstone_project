@@ -17,7 +17,7 @@ const Blogs = () => {
     return (
         <div className = "blogs">
              {blogs?.map((blog) => (
-                <div key = {blog.name}>
+                <div key = {blog.id}>
                  <Card  blog={blog}/>
                  </div>
             ))}
