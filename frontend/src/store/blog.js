@@ -156,8 +156,9 @@ export const postBlog = (blog) => async(dispatch) => {
 
    if(response.ok){
      const data = await response.json();
-    
+     console.log('The blog is ', data);
      dispatch(addBlog(data))
+   
      return data;
    }
  }

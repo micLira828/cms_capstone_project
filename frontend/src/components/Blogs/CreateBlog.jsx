@@ -1,14 +1,15 @@
 import {useState} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { postBlog} from '../../store/blog';
 import categories from './categories'
-import { postSpotImage} from '../../store/spotImage';
+
 
 const CreateBlog = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [category, setCategory] = useState('General');
+    const sessionUser = useSelector((state) => state.session.user);
 
     const navigate = useNavigate();
 
@@ -20,6 +21,7 @@ const CreateBlog = () => {
       
 
         const form = {
+           userId: sessionUser.id,
            title,
            description,
            category
@@ -43,7 +45,7 @@ const CreateBlog = () => {
                 Select a Category
             <select
             onChange = {e => setCategory(e.target.value)}
-            value = {form.type}
+            value = {category}
             >
             {categories.map(category => (
             <option
