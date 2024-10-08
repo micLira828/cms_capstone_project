@@ -71,15 +71,14 @@ export const getOnePost = (postId) => async (dispatch) => {
   }
 };
 
-export const removePost = (post) => async (dispatch) => {
-  const postId = post.id;
+export const removePost = (postId) => async (dispatch) => {
+
     const options = {
       method: 'DELETE',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(post)
+      headers: {'Content-Type': 'application/json'}
     }
 
-    console.log('The post is', post);
+    // console.log('The post is', post);
 
     const response = await csrfFetch(`/api/posts/${postId}`, options);
     console.log(response);
