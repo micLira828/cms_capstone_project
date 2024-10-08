@@ -79,7 +79,8 @@ router.post('/', requireAuth, async(req, res) => {
      { 
       userId: user.id,
       title: req.body.title,
-      description: req.body.description
+      description: req.body.description,
+      category: req.body.category
      }
  );
 

@@ -139,7 +139,7 @@ export const removeBlog = (blog) => async(dispatch) => {
 
 export const postBlog = (blog) => async(dispatch) => {
 
-  const {title, userId, description} = blog;
+  const {title, userId, description, category} = blog;
 
   let options = {
      method: 'POST',
@@ -147,6 +147,7 @@ export const postBlog = (blog) => async(dispatch) => {
      body: JSON.stringify({
        title: title,
        description: description,
+       category: category,
        userId: parseInt(userId)
     })
    }

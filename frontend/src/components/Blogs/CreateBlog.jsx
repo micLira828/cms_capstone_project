@@ -2,11 +2,13 @@ import {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { postSpot} from '../../store/spot';
+import categories from './categories'
 import { postSpotImage} from '../../store/spotImage';
 
 const CreateBlog = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
+    const [category, setCategory] = useState('General');
 
     const navigate = useNavigate();
 
@@ -19,7 +21,8 @@ const CreateBlog = () => {
 
         const form = {
            title,
-           postEntry
+           postEntry,
+           category
         }
         
         const newBlog = await dispatch(postBlog(form));
@@ -36,6 +39,21 @@ const CreateBlog = () => {
             <h3>Add a snazzy title for your Genius Masterpiece</h3>
           
             <input placeholder = "Title of your Blog" onChange={(e) => setTitle(e.target.value)} value = {title}  type = "text"></input>
+            <label>
+                Select a Category
+            <select
+            onChange = {e => setCategory(e.target.value)}
+            value = {form.type}
+            >
+            {categories.map(category => (
+            <option
+              key={id}
+            >
+              {category}
+            </option>
+          ))}
+        </select>
+      </label>
                 <h3>Describe your blog to guests</h3>
                 <p>Provide a written sneak-preview/intro of the best features of your blog
                     and the topics and subjects that the blog covers that readers will want to

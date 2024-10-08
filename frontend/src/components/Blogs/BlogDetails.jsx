@@ -43,6 +43,7 @@ const BlogDetails = () => {
        <h2>{blog.title}</h2>
        <div className="authorBox">
          <p><strong>Created by:</strong>{blog.User.username} <br></br>or:<em>{blog.User.firstName} {blog.User.lastName}</em></p>
+         <p>{blog.category}</p>
          <NavLink to = {`/users/${blog.userId}`}>View More Blogs By This User</NavLink>
        </div>
        <p><em>{blog.description}</em></p>
