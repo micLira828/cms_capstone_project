@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation';
 import Blogs from './components/Blogs';
+import CreateBlog from './components/Blogs/CreateBlog';
 import BlogDetails from './components/Blogs/BlogDetails';
 import UsersBlogs from './components/Blogs/UsersBlogs';
 import ManageYourBlogs from './components/Blogs/ManageYourBlogs';
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
       {
         path: "/blogs/current",
         element: <ManageYourBlogs/>
+      },
+      {
+        path: "/blogs/new",
+        element: <CreateBlog/>
       },
       {
         path: "/users/:userId",

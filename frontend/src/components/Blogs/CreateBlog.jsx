@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { postSpot} from '../../store/spot';
+import { postBlog} from '../../store/blog';
 import categories from './categories'
 import { postSpotImage} from '../../store/spotImage';
 
@@ -21,7 +21,7 @@ const CreateBlog = () => {
 
         const form = {
            title,
-           postEntry,
+           description,
            category
         }
         
@@ -47,7 +47,7 @@ const CreateBlog = () => {
             >
             {categories.map(category => (
             <option
-              key={id}
+              key={category.id}
             >
               {category.name}
             </option>
