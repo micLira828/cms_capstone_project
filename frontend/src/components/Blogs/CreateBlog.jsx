@@ -49,7 +49,7 @@ const CreateBlog = () => {
             <option
               key={id}
             >
-              {category}
+              {category.name}
             </option>
           ))}
         </select>
