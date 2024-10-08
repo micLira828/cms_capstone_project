@@ -4,14 +4,15 @@ import { useModal } from '../../../context/Modal';
 // import './DeletePostModal.css'
 
 const DeletePostModal = ({postId}) =>{
-    let post = useSelector((state) => state.posts.byId[postId]);
+    // let post = useSelector((state) => state.posts.byId[postId]);
+  
     const dispatch = useDispatch();
     const {closeModal} = useModal();
 
     const deleteThePost = (e) => {
         e.preventDefault();
         alert('Cold Syrup!');
-        dispatch(removePost(post)).then(closeModal)
+        dispatch(removePost(postId)).then(closeModal)
     }
     
     return (<div className = "deleteModalContainer">
