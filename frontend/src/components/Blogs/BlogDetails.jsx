@@ -14,9 +14,11 @@ const BlogDetails = () => {
   const dispatch = useDispatch();
   let { blogId } = useParams();
 
-  const sessionUser = useSelector((state) => state.session.user);
-  let blog = useSelector((state) => state.blog.byId[blogId]);
-  console.log('My blog is ', blog)
+
+  let blog = useSelector((state) => state.blog.byId);
+  console.log('The peaches and creams blog is ', blog)
+
+
    
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -32,7 +34,7 @@ const BlogDetails = () => {
     } else {
       setIsLoaded(true);
     }
-  }, [dispatch, blog, isLoaded]);
+  }, [dispatch, isLoaded]);
 
 
   if (!isLoaded) {
@@ -40,8 +42,6 @@ const BlogDetails = () => {
   }
 
    
-
-  
   return (
     <>
        <h2>{blog.title}</h2>
@@ -52,10 +52,11 @@ const BlogDetails = () => {
         />
        </div>: ""}
        <div className="authorBox">
-         <p><strong>Created by:</strong>{blog.User.username} <br></br>or:<em>{blog.User.firstName} {blog.User.lastName}</em></p>
-         <NavLink to = {`/users/${blog.userId}`}>View More Blogs By This User</NavLink>
+         <p><strong>Created by:</strong>{blog?.User?.username} <br></br>or:<em>{blog?.User?.firstName} {blog?.User?.lastName}</em></p>
+         <p>{blog.category}</p>
+         <NavLink to = {`/users/${blog?.userId}`}>View More Blogs By This User</NavLink>
        </div>
-       <p><em>{blog.description}</em></p>
+       <p><em>{blog?.description}</em></p>
         <Posts blog = {blog} /> 
     </>
   );
