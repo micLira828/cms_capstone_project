@@ -119,13 +119,14 @@ export const getUsersBlogs = (userId) => async (dispatch) => {
 
 export const removeBlog = (blog) => async(dispatch) => {
     const blogId = blog.id;
+    console.log(blog.id, ' boxes of chocolate')
     const options = {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(blog)
     }
 
-    const response = await csrfFetch(`/api/blog/${blog.id}`, options);
+    const response = await csrfFetch(`/api/blogs/${blog.id}`, options);
 
     if(response.ok){
       // const data = await response.json();
@@ -162,7 +163,7 @@ export const postBlog = (blog) => async(dispatch) => {
    }
  }
 
- export const updateSpot = (blog) => async(dispatch) => {
+ export const updateBlog = (blog) => async(dispatch) => {
 
   let options = {
     method: 'PUT',
@@ -267,6 +268,8 @@ const initialState = {
         newState = {...state}
   
         let blogId = action.payload;
+
+       
   
         const newAllBlogsArr = newState.allBlogs.filter(blg => {
            return blg.id !== blogId;
