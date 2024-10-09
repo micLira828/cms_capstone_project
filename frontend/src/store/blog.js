@@ -235,7 +235,7 @@ const initialState = {
       case GET_ONE_BLOG: {
         let newState = {...state};
         const blog = action.payload;
-        newState.byId = blog;
+        newState.byId[blog.id] = blog;
         console.log(newState);
         return newState;
       }

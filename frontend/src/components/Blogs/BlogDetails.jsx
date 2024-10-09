@@ -14,10 +14,9 @@ const BlogDetails = () => {
   const dispatch = useDispatch();
   let { blogId } = useParams();
 
-
-  let blog = useSelector((state) => state.blog.byId);
-  console.log('The peaches and creams blog is ', blog)
-
+     
+  let blog = useSelector((state) => state.blog.byId[blogId]);
+  const sessionUser = useSelector((state) => state.session.user);
 
    
   const [isLoaded, setIsLoaded] = useState(false);
