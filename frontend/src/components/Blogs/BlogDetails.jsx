@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import CreatePostModal from "./Posts/CreatePostModal";
+import OpenModalButton from "../OpenModalButton";
 import { getOneBlog } from "../../store/blog";
 import {Link, NavLink} from "react-router-dom";
 // import { getBlogPosts } from '../../store/post';
@@ -12,8 +14,10 @@ const BlogDetails = () => {
   const dispatch = useDispatch();
   let { blogId } = useParams();
 
+
   let blog = useSelector((state) => state.blog.byId);
   console.log('The peaches and creams blog is ', blog)
+
 
    
   const [isLoaded, setIsLoaded] = useState(false);
@@ -38,10 +42,15 @@ const BlogDetails = () => {
   }
 
    
-  console.log('My favorite blog is ', blog)
   return (
     <>
        <h2>{blog.title}</h2>
+       {sessionUser.id === blog.userId ? <div>
+        <OpenModalButton 
+                 modalComponent = {<CreatePostModal blog = {blog}/>}
+                 buttonText = {'Create a Post'}
+        />
+       </div>: ""}
        <div className="authorBox">
          <p><strong>Created by:</strong>{blog?.User?.username} <br></br>or:<em>{blog?.User?.firstName} {blog?.User?.lastName}</em></p>
          <p>{blog.category}</p>
