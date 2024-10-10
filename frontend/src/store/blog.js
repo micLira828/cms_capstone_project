@@ -104,7 +104,6 @@ export const getUsersBlogs = (userId) => async (dispatch) => {
   export const getOneBlog = (blogId) => async (dispatch) => {
     
     blogId = parseInt(blogId);
-    console.log(blogId, ' calling birds')
   
     const response = await fetch(`/api/blogs/${blogId}`);
 
@@ -119,7 +118,7 @@ export const getUsersBlogs = (userId) => async (dispatch) => {
 
 export const removeBlog = (blog) => async(dispatch) => {
     const blogId = blog.id;
-    console.log(blog.id, ' boxes of chocolate')
+  
     const options = {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
@@ -165,6 +164,7 @@ export const postBlog = (blog) => async(dispatch) => {
 
  export const updateBlog = (blog) => async(dispatch) => {
 
+  console.log('The blog is ', blog)
   let options = {
     method: 'PUT',
     headers: {'Content-Type': 'application/json'},
@@ -260,7 +260,10 @@ const initialState = {
   
         updatedBlogs.push(blog);
         newState.allBlogs = updatedBlogs;
-     
+        newState.byId = {...state.byId}
+       
+        newState.byId[blog.Id] = blog;
+        console.log('The blog is ', newState.byId[blog.id])
         return newState;
       }
   

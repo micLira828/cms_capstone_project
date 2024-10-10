@@ -68,7 +68,7 @@ const CreateBlog = () => {
                 </p>
                 <textarea placeholder = "Please write at least 30 characters" className = "description" onChange={(e) => setDescription(e.target.value)} value = {description}  rows = "10" cols = "20"></textarea>
                   
-            <button className = "redRectangular" type = 'submit'>Create your Blog</button>
+            <button  type = 'submit'>Update your Blog</button>
         </form>
         </>
     )

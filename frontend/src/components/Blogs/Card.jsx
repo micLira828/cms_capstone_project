@@ -14,6 +14,11 @@ const Card = ({blog}) => {// optional: callback function that will be called onc
    const navigateToPost = () => {
     navigate(`/blogs/${blog.id}/posts`)
    }
+
+
+   const updatePost = () => {
+    navigate(`/blogs/${blog.id}/update`)
+   }
   
   return (
     //   <Link className = "blogCard" to ={`/blogs/${blog.id}/posts`}>
@@ -25,10 +30,10 @@ const Card = ({blog}) => {// optional: callback function that will be called onc
          </div>
          <button onClick = {navigateToPost} className = "blogCard">View Posts</button>
          {sessionUser.id === blog.userId ? <div className = "usersOptions">
-            <button>Edit Blog</button>
+            <button onClick = {updatePost}>Edit Blog</button>
             <OpenModalButton 
                  modalComponent = {<DeleteBlogModal blogId = {blog.id}/>}
-                 buttonText = {'Delete Post'}
+                 buttonText = {'Delete Blog'}
                 /> 
          </div>: ""}
         </div>

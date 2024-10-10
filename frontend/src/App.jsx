@@ -8,6 +8,7 @@ import Navigation from './components/Navigation';
 import Blogs from './components/Blogs';
 import CreateBlog from './components/Blogs/CreateBlog';
 import BlogDetails from './components/Blogs/BlogDetails';
+import UpdateBlogForm from './components/Blogs/UpdateBlogForm';
 import UsersBlogs from './components/Blogs/UsersBlogs';
 import ManageYourBlogs from './components/Blogs/ManageYourBlogs';
 
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path: "/blogs/new",
         element: <CreateBlog/>
+      },
+      {
+        path: "/blogs/:blogId/update",
+        element: <UpdateBlogForm/>
       },
       {
         path: "/users/:userId",
