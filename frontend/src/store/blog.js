@@ -2,6 +2,8 @@ import { csrfFetch } from "./csrf";
 
 export const GET_ALL_BLOGS= "blogs/getAllBlogs";
 export const GET_ONE_BLOG = "blogs/getOneBlog";
+export const GET_USERS_BLOGS = "blogs/getUsersBlogs";
+export const GET_CURRENT_USERS_BLOGS = "blogs/getCurrentUsersBlogs";
 export const ADD_BLOG = "blogs/postBlog";
 export const EDIT_BLOG = "blogs/updateBlog";
 export const DELETE_BLOG= "blogs/removeBlogs";
@@ -13,6 +15,22 @@ const loadBlogs = (blogs) => {
       payload: blogs
     };
   };
+
+  const loadUsersBlogs = (usersBlogs) => {
+    return {
+      type: GET_USERS_BLOGS,
+      payload: usersBlogs
+    };
+  };
+
+
+  const loadCurrentUsersBlogs = (currentUsersBlogs) => {
+    return {
+      type: GET_CURRENT_USERS_BLOGS,
+      payload: currentUsersBlogs
+    };
+  };
+
 
   //regular action creator
 export const loadBlog = (blog) => {
@@ -56,14 +74,41 @@ export const getAllBlogs = () => async (dispatch) => {
     }
   };
 
+     // thunk action creator
+export const getUsersBlogs = (userId) => async (dispatch) => {
+ 
+  const response = await csrfFetch(`/api/users/${userId}/blogs`);
+  if(response.ok){
+   
+    const data = await response.json();
+    console.log('The blogs are ', data)
+    dispatch(loadUsersBlogs(data.Blogs));
+    return data;
+  }
+};
+
+
+     // thunk action creator
+     export const getCurrentUsersBlogs = () => async (dispatch) => {
+ 
+      const response = await csrfFetch(`/api/blogs/current`);
+      if(response.ok){
+       
+        const data = await response.json();
+        console.log('The blogs are ', data)
+        dispatch(loadCurrentUsersBlogs(data.Blogs));
+        return data;
+      }
+    };
+
   export const getOneBlog = (blogId) => async (dispatch) => {
     
+    blogId = parseInt(blogId);
   
     const response = await fetch(`/api/blogs/${blogId}`);
 
     if (response.ok) {
       const data = await response.json();
-     
       dispatch(loadBlog(data));
       console.log('The new blog data is', data)
       return data;
@@ -73,13 +118,14 @@ export const getAllBlogs = () => async (dispatch) => {
 
 export const removeBlog = (blog) => async(dispatch) => {
     const blogId = blog.id;
+  
     const options = {
       method: 'DELETE',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(blog)
     }
 
-    const response = await csrfFetch(`/api/blog/${blog.id}`, options);
+    const response = await csrfFetch(`/api/blogs/${blog.id}`, options);
 
     if(response.ok){
       // const data = await response.json();
@@ -93,7 +139,7 @@ export const removeBlog = (blog) => async(dispatch) => {
 
 export const postBlog = (blog) => async(dispatch) => {
 
-  const {title, userId, description} = blog;
+  const {title, userId, description, category} = blog;
 
   let options = {
      method: 'POST',
@@ -101,6 +147,7 @@ export const postBlog = (blog) => async(dispatch) => {
      body: JSON.stringify({
        title: title,
        description: description,
+       category: category,
        userId: parseInt(userId)
     })
    }
@@ -109,14 +156,15 @@ export const postBlog = (blog) => async(dispatch) => {
 
    if(response.ok){
      const data = await response.json();
-    
      dispatch(addBlog(data))
+   
      return data;
    }
  }
 
- export const updateSpot = (blog) => async(dispatch) => {
+ export const updateBlog = (blog) => async(dispatch) => {
 
+  console.log('The blog is ', blog)
   let options = {
     method: 'PUT',
     headers: {'Content-Type': 'application/json'},
@@ -157,19 +205,44 @@ const initialState = {
         newState.byId = newById;
         return newState;
       }
+      case GET_USERS_BLOGS: {
+        let newState = {...state};
+        console.log('The payload is ', action.payload);
+        let usersBlogs = action.payload;
+        newState.allBlogs = usersBlogs
+        let newById = {}
+        for(let blog of usersBlogs){
+         
+          newById[blog.id] = blog
+        }
+        newState.byId = newById;
+        return newState;
+      }
+
+
+      case GET_CURRENT_USERS_BLOGS: {
+        let newState = {...state};
+        console.log('The payload is ', action.payload);
+        let currentUsersBlogs = action.payload;
+        newState.allBlogs = currentUsersBlogs
+        let newById = {}
+        for(let blog of currentUsersBlogs){
+         
+          newById[blog.id] = blog
+        }
+        newState.byId = newById;
+        return newState;
+      }
       case GET_ONE_BLOG: {
         let newState = {...state};
         const blog = action.payload;
-      
-        let newById = {};
-        newById[blog.id] = blog;
-        newState.byId = newById;
-        //newState[allSpots] = [spot];
+        newState.byId[blog.id] = blog;
+        console.log(newState);
         return newState;
       }
       case ADD_BLOG: {
        newState = {...state};
-       //Add new spot to byId 
+       //Add new blog to byId 
        const blog = action.payload;
        newState.byId = {...state.byId};
        const blogId = blog.id;
@@ -187,7 +260,10 @@ const initialState = {
   
         updatedBlogs.push(blog);
         newState.allBlogs = updatedBlogs;
-     
+        newState.byId = {...state.byId}
+       
+        newState.byId[blog.Id] = blog;
+        console.log('The blog is ', newState.byId[blog.id])
         return newState;
       }
   
@@ -195,6 +271,8 @@ const initialState = {
         newState = {...state}
   
         let blogId = action.payload;
+
+       
   
         const newAllBlogsArr = newState.allBlogs.filter(blg => {
            return blg.id !== blogId;

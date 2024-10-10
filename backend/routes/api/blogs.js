@@ -25,22 +25,40 @@ router.get(
   );
 
   // Get all blogs of the current user
-router.get(
-  '/current', requireAuth,
-  async (req, res) => {
-    const {user} = req;
-
-      const userId = req.user.id;
-      if(userId !== user.id){
-       return res.status(403).json({message: "Forbidden"})
+  router.get(
+    '/current', requireAuth,
+    async (req, res) => {
+      const {user} = req;
+  
+        const userId = req.user.id;
+        if(userId !== user.id){
+         return res.status(403).json({message: "Forbidden"})
+      }
+     
+          const blogs = await Blog.findAll({where: {userId: user.id}, include: [
+            {model: User}
+          ]});
+  
+          console.log('The blogs are ', blogs)
+          res.json({"Blogs":blogs});
     }
-   
-        const blogs = await Blog.findAll({where: {userId: user.id}});
+  );
+  
+// Get one blog, thats searched
+router.get(
+   '/:blogId',
+   async (req, res) => {
+         
+         const {blogId} = req.params;
+         const blog = await Blog.findOne({where: {id: blogId}, include: [
+           {model: User}
+         ]});
+       
+         return res.json(blog);
+   }
+ );
 
-        console.log('The blogs are ', blogs)
-        res.json({blogs});
-  }
-);
+
 
 
 
@@ -61,7 +79,8 @@ router.post('/', requireAuth, async(req, res) => {
      { 
       userId: user.id,
       title: req.body.title,
-      description: req.body.description
+      description: req.body.description,
+      category: req.body.category
      }
  );
 
@@ -109,7 +128,8 @@ router.put('/:blogId', requireAuth, async(req, res) => {
      { 
       userId: req.body.userId,
       title: req.body.title,
-      description: req.body.description
+      description: req.body.description,
+      category: req.body.category
      }
  );
 
@@ -148,6 +168,7 @@ router.delete('/:blogId', requireAuth, async(req, res) => {
 
 router.get('/:blogId/posts', async(req, res) => {
   const {blogId} = req.params;
+
   const blog = await Blog.findByPk(blogId);
   if(!blog){
      return res.status(404).json({message: "Blog couldn't be found"})

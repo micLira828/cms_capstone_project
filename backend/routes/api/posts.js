@@ -11,6 +11,22 @@ const { Op, Sequelize, where, ValidationError} = require('sequelize');
 
 const router = express.Router();
 
+  
+// Get one blog, thats searched
+router.get(
+  '/:postId',
+  async (req, res) => {
+        
+        const {postId} = req.params;
+        const post = await Blog.findOne({where: {id: postId},include: [
+          {model: User}
+        ]});
+      
+        return res.json(post);
+  }
+);
+
+
 
 router.put('/:postId', requireAuth, async(req, res, next) =>{
     const {postId} = req.params;
@@ -41,7 +57,7 @@ router.put('/:postId', requireAuth, async(req, res, next) =>{
 
 router.delete('/:postId', requireAuth, async(req, res) =>{
   const {postId} = req.params;
-   
+  
   const post = await Post.findByPk(postId);
   if(!post){
     return res.status(404).json({message: "Review couldn't be found"})

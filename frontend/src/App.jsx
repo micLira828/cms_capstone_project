@@ -6,8 +6,15 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation';
 import Blogs from './components/Blogs';
-import Posts from './components/Blogs/Posts';
+import CreateBlog from './components/Blogs/CreateBlog';
+import BlogDetails from './components/Blogs/BlogDetails';
+import UpdateBlogForm from './components/Blogs/UpdateBlogForm';
+import UsersBlogs from './components/Blogs/UsersBlogs';
+import ManageYourBlogs from './components/Blogs/ManageYourBlogs';
+
 import * as sessionActions from './store/session';
+
+
 
 function Layout() {
   const dispatch = useDispatch();
@@ -41,8 +48,24 @@ const router = createBrowserRouter([
       },
       {
         path: "/blogs/:blogId/posts",
-        element: <Posts />
-      }
+        element: <BlogDetails/>
+      },
+      {
+        path: "/blogs/current",
+        element: <ManageYourBlogs/>
+      },
+      {
+        path: "/blogs/new",
+        element: <CreateBlog/>
+      },
+      {
+        path: "/blogs/:blogId/update",
+        element: <UpdateBlogForm/>
+      },
+      {
+        path: "/users/:userId",
+        element: <UsersBlogs/>
+      },
     ]
   }
 ]);
