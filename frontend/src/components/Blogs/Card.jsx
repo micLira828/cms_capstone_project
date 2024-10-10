@@ -29,7 +29,7 @@ const Card = ({blog}) => {// optional: callback function that will be called onc
             <p>{blog.category}</p>
          </div>
          <button onClick = {navigateToPost} className = "blogCard">View Posts</button>
-         {sessionUser.id === blog.userId ? <div className = "usersOptions">
+         {sessionUser && sessionUser.id === blog.userId ? <div className = "usersOptions">
             <button onClick = {updatePost}>Edit Blog</button>
             <OpenModalButton 
                  modalComponent = {<DeleteBlogModal blogId = {blog.id}/>}
