@@ -16,9 +16,9 @@ const UpdateBlogForm = () => {
 
   let sessionUser = useSelector((state) => state.session.user);
 
-  const [title, setTitle] = useState(blog?.title);
-  const [description, setDescription] = useState(blog.description);
-  const [category, setCategory] = useState(blog.category);
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+  const [category, setCategory] = useState('');
 
   useEffect(() => {
      dispatch(getOneBlog(blogId));
@@ -29,6 +29,13 @@ const UpdateBlogForm = () => {
     setDescription(blog.description)
     setCategory(blog.category)
   }, [dispatch])
+
+
+  useEffect(() => {
+    setTitle(title);
+    setDescription(description);
+    setCategory(category);
+ }, [title, description, category])
 
 
   let newBlog = useSelector((state) => state.blog.byId);
@@ -46,7 +53,7 @@ const UpdateBlogForm = () => {
     console.log(form);
     
     const editedBlog =  await dispatch(updateBlog(form));
-    console.log(editedBlog);
+    console.log('I live in ', editedBlog);
     navigate(`/blogs/current`);
   }//test comment
 
@@ -70,6 +77,13 @@ const UpdateBlogForm = () => {
             any special topics and subjects you
             will be discussing that your audience
             would want to know about
+            <label htmlFor="description">Description</label>
+          <textarea className = "description"
+            onChange={(e) => setDescription(e.target.value)}
+            value={description}
+            rows="10"
+            cols="20"
+          ></textarea>
          </p>
          <label>
                 Select a Category
@@ -86,13 +100,7 @@ const UpdateBlogForm = () => {
           ))}
         </select>
       </label>
-         <label htmlFor="description">Description</label>
-          <textarea className = "description"
-            onChange={(e) => setDescription(e.target.value)}
-            value={description}
-            rows="10"
-            cols="20"
-          ></textarea>
+        
          
      
           
