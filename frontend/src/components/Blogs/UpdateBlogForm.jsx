@@ -22,20 +22,12 @@ const UpdateBlogForm = () => {
 
   useEffect(() => {
      dispatch(getOneBlog(blogId));
-     console.log('Mary')
    
     setTitle(blog.title)
-    console.log('The title is ', title)
     setDescription(blog.description)
     setCategory(blog.category)
   }, [dispatch])
 
-
-  useEffect(() => {
-    setTitle(title);
-    setDescription(description);
-    setCategory(category);
- }, [title, description, category])
 
 
   let newBlog = useSelector((state) => state.blog.byId);
@@ -94,6 +86,7 @@ const UpdateBlogForm = () => {
             {categories.map(category => (
             <option
               key={category.id}
+              value = {category.name}
             >
               {category.name}
             </option>
