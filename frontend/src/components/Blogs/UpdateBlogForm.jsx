@@ -9,23 +9,29 @@ const UpdateBlogForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   console.log('The blogId is', blogId);
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [category, setCategory] = useState('');
+
+
+
+  let blog = useSelector((state) => state.blog.byId[blogId]);
+
+  let sessionUser = useSelector((state) => state.session.user);
+
+  const [title, setTitle] = useState(blog?.title);
+  const [description, setDescription] = useState(blog.description);
+  const [category, setCategory] = useState(blog.category);
 
   useEffect(() => {
-    const blog = dispatch(getOneBlog(blogId));
-
-    setTitle(blog.title);
+     dispatch(getOneBlog(blogId));
+     console.log('Mary')
+   
+    setTitle(blog.title)
+    console.log('The title is ', title)
     setDescription(blog.description)
     setCategory(blog.category)
   }, [dispatch])
 
-  let blog = useSelector((state) => state.blog.byId);
-  console.log(`The blog of ${blogId} is`, blog)
- 
-  let sessionUser = useSelector((state) => state.session.user);
 
+  let newBlog = useSelector((state) => state.blog.byId);
 
   const handleSubmit = async(e) => {
     e.preventDefault();
