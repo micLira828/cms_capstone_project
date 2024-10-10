@@ -42,7 +42,7 @@ const UpdateBlogForm = () => {
     const editedBlog =  await dispatch(updateBlog(form));
     console.log(editedBlog);
     navigate(`/blogs/current`);
-  }
+  }//test comment
 
   return (
     <>
