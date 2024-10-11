@@ -1,4 +1,4 @@
-import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import { removePost} from '../../../store/post';
 import { useModal } from '../../../context/Modal';
 // import './DeletePostModal.css'

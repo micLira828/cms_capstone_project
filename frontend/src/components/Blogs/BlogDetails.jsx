@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import CreatePostModal from "./Posts/CreatePostModal";
 import OpenModalButton from "../OpenModalButton";
 import { getOneBlog } from "../../store/blog";
-import {Link, NavLink} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 // import { getBlogPosts } from '../../store/post';
 import Posts from './Posts'
 

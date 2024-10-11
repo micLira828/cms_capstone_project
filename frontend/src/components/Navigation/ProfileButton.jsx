@@ -1,7 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { FaUserCircle } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import OpenModalMenuItem from '../OpenModalMenuItem';
+import LoginFormModal from './LoginFormModal'
+import SignupFormModal from '../SignupFormModal';
 import * as sessionActions from '../../store/session';
 
 

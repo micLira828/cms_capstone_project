@@ -30,7 +30,7 @@ const UpdateBlogForm = () => {
 
 
 
-  let newBlog = useSelector((state) => state.blog.byId);
+  // let newBlog = useSelector((state) => state.blog.byId);
 
   const handleSubmit = async(e) => {
     e.preventDefault();

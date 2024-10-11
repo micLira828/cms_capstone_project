@@ -1,8 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { FaUserCircle } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import * as sessionActions from '../store/session';
+import LoginFormModal from './Navigation/LoginFormModal';
+import OpenModalMenuItem from './OpenModalMenuItem';
+import SignupFormModal from './SignupFormModal';
 
 
 function ProfileButton({ user }) {

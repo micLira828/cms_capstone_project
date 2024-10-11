@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentUsersBlogs } from '../../store/blog';
 
-import { useParams } from 'react-router-dom';
 import Card from './Card'
 import './Blogs.css'
 
