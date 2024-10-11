@@ -36,10 +36,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    }, options);
   },
   async down(queryInterface, Sequelize) {
     options.tableName = "Users";
-    await queryInterface.dropTable('Users');
+    await queryInterface.dropTable(options);
   }
 };
