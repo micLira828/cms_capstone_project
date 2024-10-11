@@ -1,1 +1,12 @@
 /* TODO: Add sitewide styles */
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
+
+body {
+  margin: 0;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-family: 'Raleway', Arial, sans-serif;
+}
