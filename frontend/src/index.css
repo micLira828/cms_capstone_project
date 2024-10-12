@@ -3,10 +3,9 @@
 
 body {
   margin: 0;
-  
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  overflow: scroll;
   font-family: 'Raleway', Arial, sans-serif;
 }

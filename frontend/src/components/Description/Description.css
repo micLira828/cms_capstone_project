@@ -1,0 +1,17 @@
+.desc{
+    position: relative;
+    background: darkred;
+    padding: 100px;
+}
+
+.desc h2{
+    font-size: 3em;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.desc p{
+    font-size: 1em;
+    color: #fff;
+    font-weight: 300;
+}
