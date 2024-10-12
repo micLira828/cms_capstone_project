@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import CreatePostModal from "./Posts/CreatePostModal";
 import OpenModalButton from "../OpenModalButton";
 import { getOneBlog } from "../../store/blog";
+import Header from "../Header";
 import {NavLink} from "react-router-dom";
 // import { getBlogPosts } from '../../store/post';
 import Posts from './Posts'
@@ -43,20 +44,23 @@ const BlogDetails = () => {
    
   return (
     <>
-       <h2>{blog.title}</h2>
+       <Header title = {blog.title}/>
        {sessionUser.id === blog.userId ? <div>
         <OpenModalButton 
                  modalComponent = {<CreatePostModal blog = {blog}/>}
                  buttonText = {'Create a Post'}
         />
        </div>: ""}
+       <div className = "desc">
        <div className="authorBox">
          <p><strong>Created by:</strong>{blog?.User?.username} <br></br>or:<em>{blog?.User?.firstName} {blog?.User?.lastName}</em></p>
-         <p>{blog.category}</p>
+         <p>#{blog.category}</p>
          <NavLink to = {`/users/${blog?.userId}`}>View More Blogs By This User</NavLink>
        </div>
        <p><em>{blog?.description}</em></p>
+       </div>
         <Posts blog = {blog} /> 
+        
     </>
   );
 };
