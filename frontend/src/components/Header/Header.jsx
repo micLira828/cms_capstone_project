@@ -8,7 +8,7 @@ import CoffeeCup from './coffee cup.png';
 import Sofa from './sofa.png';
 import Notebook from './notebooks.png'
 
-const Header = (title)=> {
+const Header = ({title})=> {
 
     return (
        <section className = "parallax" >
@@ -19,7 +19,7 @@ const Header = (title)=> {
         <img src={CoffeeCup} id="coffeeCup"/>
         <img src={Notebook}  id="notebook"/>
         <img src={Sofa} id="sofa"/> 
-        <h2 id="text" >Welcome!</h2>
+        <h2 id="text" >{title}</h2>
        </section>
     );
   

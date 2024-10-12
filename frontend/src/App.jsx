@@ -43,7 +43,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: (<>
-          <Header/>
+          <Header title="Welcome!"/>
           <Description/>
           <Blogs/>
         </>)
