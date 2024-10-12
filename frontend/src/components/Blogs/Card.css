@@ -23,7 +23,7 @@
     bottom: calc(-100% + 5px);
     width: 100%;
     height: 100%;
-    background-color: #ff56ac;
+    background-color: darkred;
     z-index: 1;
     transition: 0.5%;
   }
