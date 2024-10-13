@@ -3,7 +3,7 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import { FaHotel } from "react-icons/fa6";
+import { FaBook } from "react-icons/fa6";
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
@@ -17,7 +17,7 @@ function Navigation({ isLoaded }) {
     <ul style = {ulStyle}>
       <li className = 'homeIcon'>
         <NavLink to="/">
-          <FaHotel className = "airbnbLogo"/>
+          <FaBook className = "airbnbLogo"/>
         </NavLink>
       </li>
       {isLoaded && (
