@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentUsersBlogs } from '../../store/blog';
+import { NavLink } from 'react-router-dom';
 import Header from '../Header';
 
 import Card from './Card'
@@ -25,6 +26,13 @@ const ManageYourBlogs = () => {
     return (
         <>
        <Header title = {name}/>
+       <div className = "desc">
+             <p>This is a page with all of your blogs.
+                Scroll below to view, or click on the button
+                below to create a new one!
+             </p>
+            <NavLink to = "/blogs/new"> Create a Blog </NavLink>
+       </div>
         <div className = "blogs">
              {yourBlogs?.map((blog) => (
                 <div key = {blog.name}>
