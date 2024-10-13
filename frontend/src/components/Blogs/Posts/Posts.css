@@ -1,0 +1,11 @@
+.buttonContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5% auto;
+    border: 1px solid brown;
+    padding: 20px;
+    width: 25%;
+    border-radius: 10px;
+
+}

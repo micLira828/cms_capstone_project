@@ -45,9 +45,9 @@ ul li{
 }
 
 button:hover{
-  color: blue;
+  background-color: darkred;
+  color: white;
 }
-
 .form{
   text-align: center;
   padding: 10px;
