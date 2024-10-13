@@ -44,9 +44,6 @@ ul li{
   flex-direction: column;
 }
 
-button:hover{
-  color: blue;
-}
 
 .form{
   text-align: center;
