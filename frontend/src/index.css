@@ -47,3 +47,28 @@ ul li{
 button:hover{
   color: blue;
 }
+
+.form{
+  text-align: center;
+  padding: 10px;
+}
+
+.form form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.form label, .postsModalContainer label{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 10px;
+}
+
+.postsModalContainer{
+  padding: 50px;
+  text-align: center;
+}

@@ -26,7 +26,7 @@ const Posts = ({blog}) => {
     <>
       <div className = "posts">
        {sessionUser && blog.userId === sessionUser.id 
-       ? ( <><OpenModalButton style = {{color: 'blue'}}
+       ? ( <><OpenModalButton 
         modalComponent = {<CreatePostModal blog = {blog}/>}
         buttonText = {'Create a post'}
        /></>) 

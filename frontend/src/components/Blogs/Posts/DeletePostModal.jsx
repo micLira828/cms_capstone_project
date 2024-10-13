@@ -15,7 +15,7 @@ const DeletePostModal = ({postId}) =>{
         dispatch(removePost(postId)).then(closeModal)
     }
     
-    return (<div className = "deleteModalContainer">
+    return (<div className = "postsModalContainer">
         <p>Are you sure you want to delete this post?</p>
         <button className = "redRectangular deleteButton" onClick = {deleteThePost}>Yes(Delete Post)</button>
         <button className = "deleteButton" onClick = {closeModal}>No(Keep Post)</button>

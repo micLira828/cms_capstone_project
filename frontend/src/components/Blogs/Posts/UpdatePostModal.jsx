@@ -51,10 +51,14 @@ const UpdatePostModal = ({postId}) => {
   
     return (
         <div className = "postsModalContainer">
-         <h2>Lets make our masterpiece even more genius!</h2>
+         <h2>Update your genius!</h2>
         <form onSubmit={handleSubmit}>
+            <label> Title
             <input value = {title}  onChange={(e) => setTitle (e.target.value)} placeholder = {title} type ="text" />
+            </label>
+            <label>Entry
             <textarea value = {postEntry}  onChange={(e) => setPostEntry (e.target.value)} placeholder = {postEntry} type ="text" />
+            </label>
                 {/* <input value = {stars}  onChange={(e) => setStars(e.target.value)} placeholder = "Stars" type ="number"></input> */}
            <button type = 'submit'>Create a Post</button>
         </form>
