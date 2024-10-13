@@ -44,7 +44,10 @@ ul li{
   flex-direction: column;
 }
 
-
+button:hover{
+  background-color: darkred;
+  color: white;
+}
 .form{
   text-align: center;
   padding: 10px;
