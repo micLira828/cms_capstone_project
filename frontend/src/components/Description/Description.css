@@ -1,8 +1,11 @@
 .desc{
     position: relative;
-    background: darkred;
+    background: linear-gradient(#b7b6bb, darkred);
     text-align: center;
     padding: 100px;
+    margin: 0.5px 20px;
+    z-index: -1;
+    border: 3px solid #b7b6bb;
 }
 
 .desc h2{
