@@ -3,6 +3,7 @@ import { useNavigate} from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import OpenModalButton from '../OpenModalButton';
 import DeleteBlogModal from './DeleteBlogModal';
+import './Card.css'
 // import { useSelector } from "react-redux";
 
 const Card = ({blog}) => {// optional: callback function that will be called once the modal is closed}) => {
@@ -23,12 +24,11 @@ const Card = ({blog}) => {// optional: callback function that will be called onc
   return (
     //   <Link className = "blogCard" to ={`/blogs/${blog.id}/posts`}>
         <div className = 'card'>
-         <div className = 'cardBody'>
-            <h4>{blog.title}</h4> 
-            <p><em>{blog.description}</em></p>
-            <p>{blog.category}</p>
-         </div>
-         <button onClick = {navigateToPost} className = "blogCard">View Posts</button>
+         <div className = 'content'>
+            <h2>{blog.title}</h2> 
+            <h4><em>#{blog.category}</em></h4>
+            <p>{blog.description}</p>
+            <button onClick = {navigateToPost} className = "blogCard">View Posts</button>
          {sessionUser && sessionUser.id === blog.userId ? <div className = "usersOptions">
             <button onClick = {updatePost}>Edit Blog</button>
             <OpenModalButton 
@@ -36,6 +36,8 @@ const Card = ({blog}) => {// optional: callback function that will be called onc
                  buttonText = {'Delete Blog'}
                 /> 
          </div>: ""}
+         </div>
+        
         </div>
         // </Link>
     );

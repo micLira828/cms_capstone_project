@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap');
+
+
+
+header{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo{
+    font-size: 2em;
+    color: #539381;
+    margin-right: 270px;
+}
+
+/* .navigation a{
+    text-decoration: none;
+    color: #539381;
+    padding: 6px 15px;
+    border-radius: 20px;
+    margin: 0 10px;
+    font-weight: 600;
+    transition: 0.5s;
+}
+
+.navigation{
+    display: flex;
+}
+
+.navigation li{
+    list-style-type: none;
+} */
+
+a:hover{
+    background: darkred;
+    color: #fff;
+}
+
+.parallax{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow-y: hidden;
+}
+
+.parallax img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+}
+
+#text{
+    position: absolute;
+    font-family: "Cedarville Cursive", cursive;
+    color: darkred;
+    font-weight: 400;
+    font-size: 5em;
+    margin-right: 50px;
+    text-shadow: 2px 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+

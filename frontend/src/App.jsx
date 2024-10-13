@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
+import Header from './components/Header';
+import Description from './components/Description';
 import SignupFormPage from './components/SignupFormPage';
 import Navigation from './components/Navigation';
 import Blogs from './components/Blogs';
@@ -40,7 +42,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Blogs/>
+        element: (<>
+          <Header title="Welcome!"/>
+          <Description/>
+          <Blogs/>
+        </>)
       },
       {
         path: "signup",

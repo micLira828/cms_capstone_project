@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
+
 import {updateBlog, getOneBlog} from "../../store/blog";
 import categories from './categories.json'
 // import './UpdateSpotModal.css';

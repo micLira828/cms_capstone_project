@@ -1,1 +1,49 @@
 /* TODO: Add sitewide styles */
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: scroll;
+  font-family: 'Raleway', Arial, sans-serif;
+}
+
+
+ul{
+  display: flex;
+  justify-content: space-between;
+}
+ul li{
+  list-style-type: none;
+}
+.userMenu{
+  list-style-type: none;
+  display: flex;
+}
+.toggleMenuList{
+  display: flex;
+  flex-direction: column;
+}
+.homeIcon{
+  position: absolute;
+  left: 5%;
+}
+
+.profileButton{
+  position: absolute;
+  right: 5%;
+}
+
+.airbnbLogo{
+  color: red;
+}
+.modals{
+  display: flex;
+  flex-direction: column;
+}
+
+button:hover{
+  color: blue;
+}

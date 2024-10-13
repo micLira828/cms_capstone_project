@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentUsersBlogs } from '../../store/blog';
+import Header from '../Header';
 
 import Card from './Card'
 import './Blogs.css'
@@ -15,13 +16,15 @@ const ManageYourBlogs = () => {
     const yourFirstName = yourBlogs[0].User.firstName;
     const yourLastName = yourBlogs[0].User.lastName
 
+    const name = yourFirstName + '' + yourLastName
+
     useEffect(() => {
         dispatch(getCurrentUsersBlogs());
       }, [dispatch]);
 
     return (
         <>
-        <h2>{yourFirstName} {yourLastName}</h2>
+       <Header title = {name}/>
         <div className = "blogs">
              {yourBlogs?.map((blog) => (
                 <div key = {blog.name}>
