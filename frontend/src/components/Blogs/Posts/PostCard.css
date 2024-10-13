@@ -65,3 +65,7 @@
   .card:hover .content{
     color: white;
   }
+
+  .createPost{
+    color: blue;
+  }

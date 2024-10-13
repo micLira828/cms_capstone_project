@@ -43,3 +43,7 @@ ul li{
   display: flex;
   flex-direction: column;
 }
+
+button:hover{
+  color: blue;
+}
