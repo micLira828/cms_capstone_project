@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import CreatePostModal from "./Posts/CreatePostModal";
-import OpenModalButton from "../OpenModalButton";
 import { getOneBlog } from "../../store/blog";
 import Header from "../Header";
 import {NavLink} from "react-router-dom";
@@ -46,10 +44,7 @@ const BlogDetails = () => {
     <>
        <Header title = {blog.title}/>
        {sessionUser.id === blog.userId ? <div>
-        <OpenModalButton 
-                 modalComponent = {<CreatePostModal blog = {blog}/>}
-                 buttonText = {'Create a Post'}
-        />
+       
        </div>: ""}
        <div className = "desc">
        <div className="authorBox">
