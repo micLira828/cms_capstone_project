@@ -51,33 +51,33 @@ const UpdateBlogForm = () => {
   }//test comment
 
   return (
-    <>
+    <div className = "form">
       <form>
           <h3>Create a title for your blog</h3>
           <p>Catch readers&apos; attention with a snappy
             title that highlights what makes it special
           </p>
-            <label htmlFor="title">Title</label>
+            <label>Title
           <input
             onChange={(e) => setTitle(e.target.value)}
             value={title}
             type="text"
           ></input>
+          </label>
 
 
         <h3>Describe your blog to readers</h3>
          <p>Mention any best features of your blog,
-            any special topics and subjects you
-            will be discussing that your audience
-            would want to know about
-            <label htmlFor="description">Description</label>
+            to hook your audience in  </p>
+            <label>Description
           <textarea className = "description"
             onChange={(e) => setDescription(e.target.value)}
             value={description}
             rows="10"
             cols="20"
           ></textarea>
-         </p>
+          </label>
+        
          <label>
                 Select a Category
             <select
@@ -101,7 +101,7 @@ const UpdateBlogForm = () => {
          
         <button onClick={handleSubmit} type="submit">Update the spot</button>
       </form>
-    </>
+    </div>
   );
 };
 

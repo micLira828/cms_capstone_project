@@ -40,12 +40,14 @@ const CreateBlog = () => {
 
   
     return (
-        <>
+        <div className = "form">
          <h2>Create a new blog</h2>
         <form onSubmit={handleSubmit}>
             <h3>Add a snazzy title for your Genius Masterpiece</h3>
           
+           <label>Title
             <input placeholder = "Title of your Blog" onChange={(e) => setTitle(e.target.value)} value = {title}  type = "text"></input>
+            </label>
             <label>
                 Select a Category
             <select
@@ -62,15 +64,17 @@ const CreateBlog = () => {
         </select>
       </label>
                 <h3>Describe your blog to guests</h3>
-                <p>Provide a written sneak-preview/intro of the best features of your blog
-                    and the topics and subjects that the blog covers that readers will want to
-                    know more about, to hook them in 
+                <p>Provide a written sneak-preview/intro of the 
+                  the blog, to hook them in 
                 </p>
+                <label>Description
+               
+                </label>
                 <textarea placeholder = "Please write at least 30 characters" className = "description" onChange={(e) => setDescription(e.target.value)} value = {description}  rows = "10" cols = "20"></textarea>
                   
             <button  type = 'submit'>Update your Blog</button>
         </form>
-        </>
+        </div>
     )
 }
 

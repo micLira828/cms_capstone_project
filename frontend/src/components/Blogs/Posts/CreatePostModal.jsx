@@ -34,11 +34,15 @@ const CreatePostModal = ({blog}) => {
 
   
     return (
-        <div className = "reviewsModalContainer">
+        <div className = "form">
          <h2>Write your genuis masterpiece here</h2>
         <form onSubmit={handleSubmit}>
+            <label>Title
             <input value = {title}  onChange={(e) => setTitle(e.target.value)} type ="text" />
+            </label>
+            <label>Entry
             <textarea placeholder = "Write your post here..." value = {postEntry}  onChange={(e) => setPostEntry(e.target.value)} type ="text" />
+            </label>
            
         
                 {/* <input value = {stars}  onChange={(e) => setStars(e.target.value)} placeholder = "Stars" type ="number"></input> */}
