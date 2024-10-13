@@ -39,9 +39,21 @@ header{
     list-style-type: none;
 } */
 
+a{
+    background-color: beige;
+    color: red;
+}
+
 a:hover{
     background: darkred;
-    color: #fff;
+    color: beige;
+}
+
+button{
+    background-color: beige;
+    color: darkred;
+    font-weight: bold;
+    padding: 10px;
 }
 
 .parallax{

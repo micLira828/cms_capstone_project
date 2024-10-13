@@ -1,6 +1,7 @@
 .desc{
     position: relative;
     background: darkred;
+    text-align: center;
     padding: 100px;
 }
 
