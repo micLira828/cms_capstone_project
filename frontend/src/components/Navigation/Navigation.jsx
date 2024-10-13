@@ -9,7 +9,7 @@ import './Navigation.css';
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
 
-  ulStyle = {
+  let ulStyle = {
     listStyletype: 'none'
   }
 
