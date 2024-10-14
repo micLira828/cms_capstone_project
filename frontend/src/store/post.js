@@ -119,7 +119,7 @@ export const postPost = (blog, post) => async(dispatch) => {
     body: JSON.stringify(post)
   }
 
-  console.log(post);
+
  
   const response = await csrfFetch(`/api/posts/${post.id}`, options);
 
@@ -182,13 +182,16 @@ const postsReducer = (state = initialState, action) => {
     case EDIT_POST: {
       newState = {...state};
       //Add new spot to byId 
-      const post = action.payload;
+      const edited_post = action.payload;
       const updatedPosts = newState.allPosts.filter(post => {
-        return post.id !== post.id;
+        return post.id !== edited_post.id;
       });
 
-      updatedPosts.push(post);
+      console.log('My new post is ', edited_post)
+      updatedPosts.push(edited_post);
       newState.allPosts = updatedPosts
+
+      console.log('And now, my new posts are: ', updatedPosts)
       console.log(updatedPosts);
       return newState;
     }
