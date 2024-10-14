@@ -60,7 +60,7 @@ const UpdatePostModal = ({postId}) => {
             <textarea value = {postEntry}  onChange={(e) => setPostEntry (e.target.value)} placeholder = {postEntry} type ="text" />
             </label>
                 {/* <input value = {stars}  onChange={(e) => setStars(e.target.value)} placeholder = "Stars" type ="number"></input> */}
-           <button type = 'submit'>Create a Post</button>
+           <button type = 'submit'>Update your Post</button>
         </form>
         </div>
     )

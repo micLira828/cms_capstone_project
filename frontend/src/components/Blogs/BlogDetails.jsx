@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getOneBlog } from "../../store/blog";
 import Header from "../Header";
-import {NavLink} from "react-router-dom";
-// import { getBlogPosts } from '../../store/post';
-import Posts from './Posts'
+import Posts from './Posts';
 
 
 
@@ -15,7 +13,8 @@ const BlogDetails = () => {
 
      
   let blog = useSelector((state) => state.blog.byId[blogId]);
-  const sessionUser = useSelector((state) => state.session.user);
+  // const sessionUser = useSelector((state) => state.session.user);
+  const navigate = useNavigate();
 
    
   const [isLoaded, setIsLoaded] = useState(false);
@@ -24,6 +23,11 @@ const BlogDetails = () => {
     const curr = await dispatch(getOneBlog(blogId));
     console.log("The bunnies live in", curr)
   };
+
+  const navigateToUsersBlogs = () => {
+      navigate(`/users/${blog?.userId}`)
+  }
+
 
   useEffect(() => {
    
@@ -43,15 +47,13 @@ const BlogDetails = () => {
   return (
     <>
        <Header title = {blog.title}/>
-       {sessionUser.id === blog.userId ? <div>
        
-       </div>: ""}
        <div className = "desc">
        <div className="authorBox">
          <p><strong>Created by:</strong>{blog?.User?.username} <br></br>or:<em>{blog?.User?.firstName} {blog?.User?.lastName}</em></p>
          <p>#{blog.category}</p>
-         <NavLink to = {`/users/${blog?.userId}`}>View More Blogs By This User</NavLink>
-       </div>
+         <button onClick = {navigateToUsersBlogs}>View More Blogs By User</button>
+       </div> 
        <p><em>{blog?.description}</em></p>
        </div>
         <Posts blog = {blog} /> 
