@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getCurrentUsersBlogs } from '../../store/blog';
-import { NavLink } from 'react-router-dom';
 import Header from '../Header';
 
 import Card from './Card'
@@ -37,7 +36,7 @@ const ManageYourBlogs = () => {
                 Scroll below to view, or click on the button
                 below to create a new one!
              </p>
-            <button onClick = {navigateToCreateBlogPage} > Create a Blog </button>
+            <button onClick = {navigateToCreateBlogPage}> Create a Blog </button>
        </div>
         <div className = "blogs">
              {yourBlogs?.map((blog) => (
