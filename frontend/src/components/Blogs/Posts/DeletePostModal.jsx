@@ -5,7 +5,7 @@ import { useModal } from '../../../context/Modal';
 
 const DeletePostModal = ({postId}) =>{
     // let post = useSelector((state) => state.posts.byId[postId]);
-  
+    alert('Scroll Up!');
     const dispatch = useDispatch();
     const {closeModal} = useModal();
 
