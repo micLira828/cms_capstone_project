@@ -99,7 +99,7 @@ const UpdateBlogForm = () => {
      
           
          
-        <button onClick={handleSubmit} type="submit">Update the spot</button>
+        <button onClick={handleSubmit} type="submit">Update the Blog</button>
       </form>
     </div>
   );

@@ -72,7 +72,7 @@ const CreateBlog = () => {
                 </label>
                 <textarea placeholder = "Please write at least 30 characters" className = "description" onChange={(e) => setDescription(e.target.value)} value = {description}  rows = "10" cols = "20"></textarea>
                   
-            <button  type = 'submit'>Update your Blog</button>
+            <button  type = 'submit'>Create a Blog</button>
         </form>
         </div>
     )

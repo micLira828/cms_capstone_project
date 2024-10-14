@@ -13,7 +13,7 @@ const Description = () => {
     Also, I eventually want to add a feature to view blog/post traction, but all you would view as a blogger is the NUMBER of people that follow your content/and/or read your blogs/post for tracking purposes for the creator to know which are doing best and attract most attention, so they know better what to do more or less of. We will include that later.
     </p>
     
-     </section>
+    </section>
     )
     
 };
