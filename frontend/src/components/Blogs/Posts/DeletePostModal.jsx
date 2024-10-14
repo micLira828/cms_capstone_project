@@ -11,7 +11,7 @@ const DeletePostModal = ({postId}) =>{
 
     const deleteThePost = (e) => {
         e.preventDefault();
-        alert('Cold Syrup!');
+        alert('Deleted!');
         dispatch(removePost(postId)).then(closeModal)
     }
     
