@@ -10,16 +10,13 @@ import './Blogs.css'
 const ManageYourBlogs = () => {
     const dispatch = useDispatch();
 
+
     const yourBlogs = useSelector((state) => state.blog.allBlogs);
     const navigate = useNavigate();
 
     console.log('Your blogs are ', yourBlogs)
 
-    const yourFirstName = yourBlogs[0].User.firstName;
-    const yourLastName = yourBlogs[0].User.lastName;
-
-    const name = yourFirstName + '' + yourLastName
-
+   
     const navigateToCreateBlogPage = () => {
         navigate(`/blogs/new`)
     }
@@ -30,7 +27,7 @@ const ManageYourBlogs = () => {
 
     return (
         <>
-       <Header title = {name}/>
+        <Header title = "Your Blogs"/>
        <div className = "desc">
              <p>This is a page with all of your blogs.
                 Scroll below to view, or click on the button
@@ -39,11 +36,11 @@ const ManageYourBlogs = () => {
             <button onClick = {navigateToCreateBlogPage}> Create a Blog </button>
        </div>
         <div className = "blogs">
-             {yourBlogs?.map((blog) => (
+             {yourBlogs ? yourBlogs.map((blog) => (
                 <div key = {blog.name}>
                  <Card  blog={blog}/>
-                 </div>
-            ))}
+                 </div> 
+            )) : <><h2>You do not have any blogs yet!</h2><button onClick = {navigate('/blogs/new')}>Create A blog</button></>}
         </div>
         </>
     );
