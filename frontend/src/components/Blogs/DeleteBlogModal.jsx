@@ -10,7 +10,7 @@ const DeleteBlogModal = ({blogId}) =>{
 
     const deleteTheBlog= (e) => {
         e.preventDefault();
-        alert('Cold Syrup!');
+        alert('Deleted!');
         dispatch(removeBlog(blog)).then(closeModal)
     }
     
