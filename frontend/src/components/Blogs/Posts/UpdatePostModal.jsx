@@ -26,7 +26,7 @@ const UpdatePostModal = ({postId}) => {
         dispatch(getOnePost(postId))
 
             .then((data) => {
-                // console.log('Data ', data)
+                console.log('Data ', data)
                 setTitle(data.title)
                 setPostEntry(data.postEntry)
             })
@@ -45,7 +45,7 @@ const UpdatePostModal = ({postId}) => {
         try {
             await dispatch(updatePost(form)).then(closeModal); // Navigate back to the product details page
         } catch (error) {
-            console.error("Error submitting review:", error);
+            console.error("Error submitting post", error);
         }
     }
   
